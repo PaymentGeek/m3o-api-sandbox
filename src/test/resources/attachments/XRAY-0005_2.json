@@ -1,0 +1,12 @@
+{
+  "name": "POST - Test New Product 2",
+  "type": "TestType2",
+  "price": 142,
+  "shipping": 0,
+  "upc": "123456781234",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  "manufacturer": "TestManufacturer",
+  "model": "11-12342",
+  "url": "file:///C:/Users/Andi/IdeaProjects/serenity-rest-starter/target/site/serenity/index.html",
+  "image": "file:///C:/Users/Andi/IdeaProjects/serenity-rest-starter/target/site/serenity/index.html"
+}
