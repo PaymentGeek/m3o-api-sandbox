@@ -1,4 +1,4 @@
-package starter.products;
+package starter.user;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,19 +9,24 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
 
-public class bbProductsStepDefinitions {
+public class m3oUserStepDefinitions {
 
     @Steps
-    bbProductsAPI productsAPI;
+    m3oUserAPI userAPI;
+
+    @When("I call method {} from endpoint {} for user {} with body from template {}")
+    public void createUser(String crud, String endpoint, String userNo, String template) {
+        userAPI.createUser(crud, endpoint, userNo, template);
+    }
 
     @When("I get all products from the store")
     public void getAllProducts() {
-        bbProductsAPI.getAllProducts();
+        m3oUserAPI.getAllProducts();
     }
 
     @When("I get a product by id {}")
     public void getProductById(String id) {
-        bbProductsAPI.getProductById(id);
+        m3oUserAPI.getProductById(id);
     }
 
     @Then("the response code should be {}")
@@ -47,21 +52,21 @@ public class bbProductsStepDefinitions {
     }
     @When("I POST a new product for id {}")
     public void postProduct(String xrayId) {
-        bbProductsAPI.postProductforId(xrayId);
+        m3oUserAPI.postProductforId(xrayId);
     }
 
     @When("I PUT a new product {} for id {}")
     public void putProduct(String id, String xrayId) {
-        bbProductsAPI.putProductforId(id, xrayId);
+        m3oUserAPI.putProductforId(id, xrayId);
     }
 
     @When("I delete a product by id")
     public void deleteProductById() {
-        bbProductsAPI.deleteProductById();
+        m3oUserAPI.deleteProductById();
     }
 
     @When("I delete a product by id {}")
     public void deleteProductById(String id) {
-        bbProductsAPI.deleteProductById(id);
+        m3oUserAPI.deleteProductById(id);
     }
 }

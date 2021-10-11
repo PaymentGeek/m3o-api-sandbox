@@ -1,12 +1,16 @@
-Feature: Best Buy Products Feature
+Feature: m3o User Feature
 
-  @bestBuy @XRAY-0001
+  @XRAY-0000
+  Scenario: Create a new user
+    Given I call method POST from endpoint Create for user 001 with body from template createUser
+    #Then the response code should be 200
+
+  @regression @XRAY-0001
   Scenario: XRAY-0001 I get a list of products from Best Buy
     When I get all products from the store
     Then the response code should be 200
     And the response body field 'total' is not empty
 
-  @bestBuy @XRAY-0002
   Scenario Outline: XRAY-0002 I get a product based on an ID
     When I get a product by id <id>
     Then the response code should be <response_code>
@@ -18,7 +22,7 @@ Feature: Best Buy Products Feature
     |9575048       |200           |id    |
     |9575108       |200           |id    |
 
-  @bestBuy @XRAY-0003
+  @regression @XRAY-0003
   Scenario Outline: XRAY-0003 I get a product based on an invalid ID
     When I get a product by id <id>
     Then the response code should be <response_code>
@@ -29,7 +33,7 @@ Feature: Best Buy Products Feature
       |x           |404           |
       |0           |404           |
 
-  @bestBuy @XRAY-0004
+  @regression @XRAY-0004
   Scenario Outline: XRAY-0004 POST a new product
     # please pass the XRAY ID of the test case as a parameter
     When I POST a new product for id <xray_id>
@@ -40,7 +44,7 @@ Feature: Best Buy Products Feature
       |XRAY-0004_2    |
       |XRAY-0004_3    |
 
-  @bestBuy @XRAY-0005
+  @regression @XRAY-0005
   Scenario Outline: XRAY-0005 POST an invalid product
     # please pass the XRAY ID of the test case as a parameter
     When I POST a new product for id <xray_id>
@@ -54,7 +58,7 @@ Feature: Best Buy Products Feature
       # Invalid description
       |XRAY-0005_2    |['description' should NOT be longer than 100 characters]|
 
-  @bestBuy @XRAY-0006
+  @regression @XRAY-0006
   Scenario Outline: XRAY-0006 PUT a new product
     # please pass the product ID as a first parameter
     # and XRAY ID of the test case as a parameter
@@ -70,7 +74,7 @@ Feature: Best Buy Products Feature
       |9575048       |XRAY-0006_2    |PUT - Test New Product2|
       |9575108       |XRAY-0006_3    |PUT - Test New Product3|
 
-  @bestBuy @XRAY-0007
+  @regression @XRAY-0007
   Scenario Outline: XRAY-0007 PUT a new invalid product
     # please pass the product ID as a first parameter
     # and XRAY ID of the test case as a parameter
@@ -83,7 +87,7 @@ Feature: Best Buy Products Feature
       |9575048     |XRAY-0007_2    |errors        |400           |['price' should be multiple of 0.01]                    |
       |9575108     |XRAY-0007_3    |errors        |400           |['description' should NOT be longer than 100 characters]|
 
-  @bestBuy @XRAY-0008
+  @regression @XRAY-0008
   Scenario: XRAY-0008 I delete a product by id
     # Since the API does not return the new product ID when POSTING a new entry,
     # so we can't generate our test data for the delete,
@@ -92,7 +96,7 @@ Feature: Best Buy Products Feature
     When I delete a product by id
     Then the response code should be 200
 
-  @bestBuy @XRAY-0009
+  @regression @XRAY-0009
   Scenario Outline: XRAY-0009 I delete a product by an invalid id
     When I delete a product by id <id>
     Then the response code should be <response_code>
