@@ -2,8 +2,30 @@ Feature: m3o User Feature
 
   @XRAY-0000
   Scenario: Create a new user
-    Given I call method POST from endpoint Create for user 001 with body from template createUser
-    #Then the response code should be 200
+    Given I call method POST from endpoint Create for user 016 with body from template createUser
+    Then the response code should be 200
+    And the value in field account is not null
+
+  @XRAY-0000
+  Scenario: Update an user
+    Given I call method POST from endpoint Update for user 016 with body from template updateUser
+    Then the response code should be 200
+
+  @XRAY-0000
+  Scenario: Logon user
+    Given I call method POST from endpoint Login for user 016 with body from template loginUser
+    Then the response code should be 200
+    And the value in field session.id is saved to logoutUser
+
+  @XRAY-0000
+  Scenario: Logout user
+    Given I call method POST from endpoint Logout for user 016 with body from template logoutUser_session
+    Then the response code should be 200
+
+  @XRAY-0000
+  Scenario: Delete a new user
+    Given I call method POST from endpoint Delete for user 016 with body from template deleteUser
+    Then the response code should be 200
 
   @regression @XRAY-0001
   Scenario: XRAY-0001 I get a list of products from Best Buy
